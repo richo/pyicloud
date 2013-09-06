@@ -7,7 +7,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='pyicloud_dwoh',
-    version='0.3',
+    version='0.4',
     url='https://github.com/latestrevision/pyicloud',
     description=(
         'PyiCloud is a module which allows pythonistas to '
