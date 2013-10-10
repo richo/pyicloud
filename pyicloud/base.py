@@ -1,3 +1,4 @@
+import sys
 import time
 import uuid
 import hashlib
@@ -61,6 +62,11 @@ class PyiCloudService(object):
         """
         req = self.session.get(self._base_validate_url, params=self.params)
         resp = req.json()
+
+        sys.stderr.write("Backend responded: \n")
+        sys.stderr.write(str(repr(resp)))
+        sys.stderr.write("\n")
+
         if 'dsInfo' in resp:
             dsid = resp['dsInfo']['dsid']
             self.params.update({'dsid': dsid})
@@ -117,7 +123,7 @@ class PyiCloudService(object):
     def calendar(self):
         service_root = self.webservices['calendar']['url']
         return CalendarService(service_root, self.session, self.params)
-    
+
     @property
     def contacts(self):
         service_root = self.webservices['contacts']['url']
